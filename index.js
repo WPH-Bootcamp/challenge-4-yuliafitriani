@@ -4,6 +4,7 @@ const prompt = require("prompt-sync")({ sigint: true });
 
 let todos = [];
 
+//generating unique id with date and random string
 function generateUniqueId() {
   const timeStamp = Date.now();
   const randomNumber = Math.random().toString(36).substring(2, 9);
@@ -11,6 +12,7 @@ function generateUniqueId() {
   return uniqid;
 }
 
+//adding data to do
 function addTodo() {
   const todoText = prompt("Add todo : ");
 
@@ -29,6 +31,7 @@ function addTodo() {
   }
 }
 
+//mark todo as completed task
 function markTodoCompleted() {
   listTodos();
 
@@ -49,6 +52,7 @@ function markTodoCompleted() {
   }
 }
 
+//delete todo if no longer will do
 function deleteTodo() {
   listTodos();
 
@@ -72,15 +76,16 @@ function deleteTodo() {
   }
 }
 
+//list todo with status active or done
 function listTodos() {
   console.log("---YOUR TO-DO LIST---");
 
   if (todos.length > 0) {
     todos.forEach((todo, index) => {
-      let status = "[ACTIVE]";
+      let status = "[ACTIVE]"; //if isCompleted false then default with active
 
       if (todo.isCompleted) {
-        status = "[DONE]";
+        status = "[DONE]"; //if isCompleted true then default with active
       }
 
       let i = 1 + index;
@@ -91,6 +96,7 @@ function listTodos() {
   }
 }
 
+//default function when application running
 function runTodoApp() {
   let running = true;
   while (running) {
